@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int initLogin();
-int Login();
+int Login(bool);
 int Register();
 
 int initLogin(){
@@ -26,19 +26,27 @@ int initLogin(){
     return result;
 }
 
-int Login(){
-    return 1;
+int Login(bool n){
+    if(n == false){
+        cout << "No Accounts exist yet. Please Register an Account first." << endl;
+        return 0;
+    }
+
 }
 
 int Register(){
-    return 1;
+    cout << "Your entry was not one of the options. Please try again." << endl;
 }
 
 int main(){
     int result;
+    bool AccExists;
     result = initLogin();
     if(result == 1){
-        Login();
+        int result = Login(AccExists);
+        if(result == 0){
+            Register();
+        }
     }
     else{
         Register();
