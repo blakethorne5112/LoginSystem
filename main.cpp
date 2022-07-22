@@ -44,7 +44,7 @@ void Login(){
             cin >> temppass;
         }
     }
-    cout << "Login Successful! Thanks for logging in. End of Program." << endl;
+    cout << "Login Successful! Thanks for logging in." << endl;
 }
 
 void Register(){
@@ -55,22 +55,31 @@ void Register(){
 }
 
 int main(){
-    int result;
-    bool AccExists = false;
-    result = initLogin();
-    if(result == 1){
-        if(AccExists == false){
-            cout << "No Accounts exist yet. Please Register an Account first." << endl;
+    int state = 1;
+    while(state != 0){
+        state = 1;
+        int result;
+        bool AccExists = false;
+        result = initLogin();
+        if(result == 1){
+            if(AccExists == false){
+                cout << "No Accounts exist yet. Please Register an Account first." << endl;
+                Register();
+                bool AccExists = true;
+                cout << "Thanks for Registering! Now, time to Login." << endl;
+            }
+        }
+        else{
             Register();
             bool AccExists = true;
             cout << "Thanks for Registering! Now, time to Login." << endl;
         }
+        Login();
+        cout << "That's all for now! Press 0 to Exit the Program. Press 1 to Restart." << endl;
+        cin >> state;
+        while(state != 0 && state != 1){
+            cout << "Your entry was not one of the options. Please try again." << endl;
+            cin >> state;
+        }
     }
-    else{
-        Register();
-        bool AccExists = true;
-        cout << "Thanks for Registering! Now, time to Login." << endl;
-    }
-    Login();
 }
-
